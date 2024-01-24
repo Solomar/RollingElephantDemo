@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://bdbc6lnlrsvev"]
+
+[ext_resource type="Script" path="res://Scenes/RollingElephant.gd" id="1_4lx34"]
+[ext_resource type="Texture2D" uid="uid://bxmvmd1vo4k5j" path="res://Sprites/Elfie.png" id="1_gto73"]
+[ext_resource type="Shader" path="res://scale3x.gdshader" id="2_7qwd3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_22d2p"]
+shader = ExtResource("2_7qwd3")
+shader_parameter/pixel_scale = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ftrbm"]
+radius = 16.0312
+
+[node name="RollingElephant" type="RigidBody2D"]
+script = ExtResource("1_4lx34")
+target_speed = 100.0
+acceleration = 1000.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_22d2p")
+texture = ExtResource("1_gto73")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ftrbm")
+
+[node name="JumpCooldown" type="Timer" parent="."]
+one_shot = true
+
+[node name="JumpTime" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[connection signal="timeout" from="JumpCooldown" to="." method="_on_jump_cooldown_timeout"]
+[connection signal="timeout" from="JumpTime" to="." method="_on_jump_time_timeout"]

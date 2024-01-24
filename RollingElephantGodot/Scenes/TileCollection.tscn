@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://bvmtu6yafuwi"]
+
+[ext_resource type="Script" path="res://Scenes/TileCollection.gd" id="1_xijpb"]
+[ext_resource type="PackedScene" uid="uid://b5xth1x2nvox7" path="res://Scenes/Tile.tscn" id="2_3tm0s"]
+[ext_resource type="Script" path="res://Scenes/Tile.gd" id="3_7b8vp"]
+[ext_resource type="Shape2D" uid="uid://d06yo3fb8spr3" path="res://TileCollectionShape.tres" id="3_xneie"]
+
+[node name="TileCollection" type="Node2D"]
+script = ExtResource("1_xijpb")
+tile_scene = ExtResource("2_3tm0s")
+_tile_count = 5
+_tiles = [Object(Node2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, 0),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"script":ExtResource("3_7b8vp"),"_cleaned":false,"_left_duplicate_tile":null,"_right_duplicate_tile":null)
+, Object(Node2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(-32, 0),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"script":ExtResource("3_7b8vp"),"_cleaned":false,"_left_duplicate_tile":null,"_right_duplicate_tile":null)
+, Object(Node2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(32, 0),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"script":ExtResource("3_7b8vp"),"_cleaned":false,"_left_duplicate_tile":null,"_right_duplicate_tile":null)
+, Object(Node2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(-64, 0),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"script":ExtResource("3_7b8vp"),"_cleaned":false,"_left_duplicate_tile":null,"_right_duplicate_tile":null)
+, Object(Node2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(64, 0),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"script":ExtResource("3_7b8vp"),"_cleaned":false,"_left_duplicate_tile":null,"_right_duplicate_tile":null)
+]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+disable_mode = 1
+gravity_scale = 0.0
+can_sleep = false
+freeze = true
+
+[node name="TileCollectionCollisionShape" type="CollisionShape2D" parent="RigidBody2D"]
+unique_name_in_owner = true
+z_index = 1
+position = Vector2(0, -2.5)
+shape = ExtResource("3_xneie")
+debug_color = Color(0.952941, 0, 0.564706, 0.419608)
+
+[node name="Tile5" type="Node2D" parent="." instance=ExtResource("2_3tm0s")]
+script = ExtResource("3_7b8vp")
+
+[node name="Tile6" type="Node2D" parent="." instance=ExtResource("2_3tm0s")]
+position = Vector2(-32, 0)
+script = ExtResource("3_7b8vp")
+
+[node name="Tile7" type="Node2D" parent="." instance=ExtResource("2_3tm0s")]
+position = Vector2(32, 0)
+script = ExtResource("3_7b8vp")
+
+[node name="Tile8" type="Node2D" parent="." instance=ExtResource("2_3tm0s")]
+position = Vector2(-64, 0)
+script = ExtResource("3_7b8vp")
+
+[node name="Tile9" type="Node2D" parent="." instance=ExtResource("2_3tm0s")]
+position = Vector2(64, 0)
+script = ExtResource("3_7b8vp")

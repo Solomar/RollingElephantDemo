@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://b5xth1x2nvox7"]
+
+[ext_resource type="Script" path="res://Scenes/Tile.gd" id="1_ngi47"]
+[ext_resource type="Texture2D" uid="uid://dfdymqj86c5ii" path="res://Sprites/Clean-Tile.png" id="2_dtiaj"]
+[ext_resource type="Texture2D" uid="uid://drb7ceok8ct50" path="res://Sprites/Tile.png" id="3_mijt6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kh0o7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_dtiaj")
+}],
+"loop": true,
+"name": &"clean",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_mijt6")
+}],
+"loop": true,
+"name": &"dirty",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nd7nr"]
+size = Vector2(32, 10)
+
+[node name="Tile" type="Node2D"]
+script = ExtResource("1_ngi47")
+
+[node name="TileSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_kh0o7")
+animation = &"dirty"
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, -16)
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 11)
+shape = SubResource("RectangleShape2D_nd7nr")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
